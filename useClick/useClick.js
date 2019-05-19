@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
-import PropTypes from "prop-types";
 
 export const useClick = onClick => {
+  if (typeof onClick !== "function") {
+    return;
+  }
   const element = useRef();
   useEffect(() => {
     if (element.current) {
@@ -14,8 +16,4 @@ export const useClick = onClick => {
     };
   }, []);
   return element;
-};
-
-useClick.propTypes = {
-  onClick: PropTypes.func.isRequired
 };

@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
-import PropTypes from "prop-types";
 
 export const useHover = onHover => {
+  if (typeof onHover !== "function") {
+    return;
+  }
   const element = useRef();
   useEffect(() => {
     if (element.current) {
@@ -14,8 +16,4 @@ export const useHover = onHover => {
     };
   }, []);
   return element;
-};
-
-useHover.propTypes = {
-  onHover: PropTypes.func.isRequired
 };

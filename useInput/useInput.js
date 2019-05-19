@@ -1,7 +1,12 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
 
 export const useInput = (initialValue, validator) => {
+  if (typeof initialValue !== "string") {
+    return;
+  }
+  if (typeof validator !== "function") {
+    return;
+  }
   const [value, setValue] = useState(initialValue);
   const onChange = ({ target: { value } }) => {
     const willUpdate = validator ? validator(value) : true;
@@ -10,9 +15,4 @@ export const useInput = (initialValue, validator) => {
     }
   };
   return { value, onChange };
-};
-
-useInput.propTypes = {
-  initialValue: PropTypes.string.isRequired,
-  validator: PropTypes.func
 };

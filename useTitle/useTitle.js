@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 
 export const useTitle = initialTitle => {
+  if (typeof initialTitle !== "string") {
+    return;
+  }
   const [title, setTitle] = useState(initialTitle);
   const updateTitle = () => {
     const htmlTitle = document.querySelector("title");
@@ -9,8 +11,4 @@ export const useTitle = initialTitle => {
   };
   useEffect(updateTitle, [title]);
   return setTitle;
-};
-
-useTitle.propTypes = {
-  initialTitle: PropTypes.string.isRequired
 };
