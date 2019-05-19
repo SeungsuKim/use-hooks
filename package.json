@@ -5,5 +5,9 @@
   "main": "index.js",
   "repository": "https://github.com/SeungsuKim/use-hooks.git",
   "author": "Seungsu Kim",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6"
+  }
 }
